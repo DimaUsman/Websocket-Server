@@ -18,6 +18,7 @@ EXPOSE 5356
 
 # Define environment variable
 ENV NAME luxms-websocket
+ENV port 5356
 
 # Run the app when the container launches
-CMD ["node", "src/index.js"]
+CMD ["node", "index_ws.js"]
