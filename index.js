@@ -1,14 +1,11 @@
 const WebSocket = require('ws');
 
 
-const wss = new WebSocket({
-  port: 5357,
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "*",
-    "Access-Control-Allow-Methods": "PUT, GET, POST, DELETE, OPTIONS"
-  }
-});
+const wss = new WebSocket.Server({ port: process.env.port,headers: {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "http://localhost:3000",
+  "Access-Control-Allow-Methods": "PUT, GET, POST, DELETE, OPTIONS"
+}} );
 
 
 wss.on('connection', function connection(ws) {
