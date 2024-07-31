@@ -14,11 +14,11 @@ RUN npm install
 COPY . .
 
 # Make port 5356 available outside the container
-EXPOSE 5356
+EXPOSE 5357
 
 # Define environment variable
 ENV NAME luxms-websocket
-ENV port 5356
+ENV port 5357
 
 # Run the app when the container launches
 CMD ["node", "index_ws.js"]

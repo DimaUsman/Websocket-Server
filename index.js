@@ -22,6 +22,7 @@ wss.on('connection', function connection(ws) {
     });
 });
 
+
 // Implementing a shutdown hook for graceful shutdown
 process.on('SIGINT', () => {
     console.log('Server shutting down...');
