@@ -1,8 +1,11 @@
 {
   "dependencies": {
+    "asyncio": "^0.0.2",
     "express": "^4.19.2",
     "http": "^0.0.1-security",
     "socket.io": "^4.7.5",
+    "tornado": "^0.11.0",
+    "websockets": "^0.2.0",
     "ws": "^8.18.0"
   }
 }
