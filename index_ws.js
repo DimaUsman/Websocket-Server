@@ -7,8 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "*", // This allows connections from any origin. Adjust this according to your needs.
-    methods: ["GET", "POST"]
+    origin: "*" // This allows connections from any origin. Adjust this according to your needs.
   }
 });
 
@@ -23,5 +22,5 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
-const PORT = process.env.port || 3000;
+const PORT = process.env.port || 5357;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

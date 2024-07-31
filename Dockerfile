@@ -21,5 +21,5 @@ ENV NAME luxms-websocket
 ENV port 5357
 
 # Run the app when the container launches
-#CMD ["node", "index.js"]
-CMD ["python", "server.py"]
+CMD ["node", "index_ws.js"]
+#CMD ["python", "server.py"]
