@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
 
-const wss = new WebSocketServer({
+const wss = new WebSocket({
   port: 5357,
   headers: {
     "Access-Control-Allow-Origin": "*",
