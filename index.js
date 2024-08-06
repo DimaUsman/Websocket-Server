@@ -6,9 +6,10 @@ const wss = new WebSocket.Server({ port: process.env.port,headers: {
   "Access-Control-Allow-Methods": "PUT, GET, POST, DELETE, OPTIONS"
 }} );
  */
-const wss = new WebSocketServer({ port: 5357 });
+const wss = new WebSocket.Server({ port: 5357});
 
 wss.on('connection', function connection(ws) {
+
    clients.add(ws);
     console.log('Client connected');
 
@@ -19,7 +20,7 @@ wss.on('connection', function connection(ws) {
 
         clients.forEach(function each(client) {
           if (client !== ws && client.readyState === WebSocket.OPEN) {
-            client.send(message);
+            client.send(message.utf8Data);
           }
         });
     });
