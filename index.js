@@ -1,5 +1,5 @@
 const WebSocket = require('ws');
-
+let clients = new Set();
 
 const wss = new WebSocket.Server({ port: process.env.port,headers: {
   "Access-Control-Allow-Origin": "*",
@@ -8,7 +8,7 @@ const wss = new WebSocket.Server({ port: process.env.port,headers: {
 
 
 wss.on('connection', function connection(ws) {
-
+   clients.add(ws);
     console.log('Client connected');
 
 
@@ -16,12 +16,17 @@ wss.on('connection', function connection(ws) {
 
         console.log('Received: %s', message);
 
-        ws.send(`${message}`);
+        clients.forEach(function each(client) {
+          if (client !== ws && client.readyState === WebSocket.OPEN) {
+            client.send(message);
+          }
+        });
     });
 
 
-    ws.on('close', function () {
-        console.log('Client disconnected');
+    ws.on('close', () => {
+      console.log(`Client disconnected. Total clients: ${clients.size - 1}`);
+      clients.delete(ws);
     });
 });
 
